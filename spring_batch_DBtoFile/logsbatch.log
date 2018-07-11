@@ -1,0 +1,62 @@
+2018-04-09 14:02:59,714 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\application-context.xml]
+2018-04-09 14:02:59,798 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\batch-context.xml]
+2018-04-09 14:02:59,825 INFO [org.springframework.context.support.GenericXmlApplicationContext] - Refreshing org.springframework.context.support.GenericXmlApplicationContext@484b61fc: startup date [Mon Apr 09 14:02:59 KST 2018]; root of context hierarchy
+2018-04-09 14:03:00,188 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [org/springframework/batch/core/schema-drop-oracle10g.sql]
+2018-04-09 14:03:00,428 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [org/springframework/batch/core/schema-drop-oracle10g.sql] in 240 ms.
+2018-04-09 14:03:00,430 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [org/springframework/batch/core/schema-oracle10g.sql]
+2018-04-09 14:03:00,844 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [org/springframework/batch/core/schema-oracle10g.sql] in 414 ms.
+2018-04-09 14:03:00,844 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [batch_drop_table.sql]
+2018-04-09 14:03:00,848 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [batch_drop_table.sql] in 3 ms.
+2018-04-09 14:03:00,848 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [batch_create_table.sql]
+2018-04-09 14:03:00,873 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [batch_create_table.sql] in 24 ms.
+2018-04-09 18:01:49,028 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_DBtoFile\target\classes\context\application-context.xml]
+2018-04-09 18:01:49,122 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_DBtoFile\target\classes\context\batch-context.xml]
+2018-04-09 18:01:49,184 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Overriding bean definition for bean 'simpleJobToFile': replacing [Generic bean: class [org.springframework.batch.core.configuration.xml.SimpleFlowFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.batch.core.configuration.xml.JobParserJobFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-04-09 18:01:49,184 INFO [org.springframework.context.support.GenericXmlApplicationContext] - Refreshing org.springframework.context.support.GenericXmlApplicationContext@484b61fc: startup date [Mon Apr 09 18:01:49 KST 2018]; root of context hierarchy
+2018-04-09 18:01:49,434 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-04-09 18:01:49,839 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - Job: [FlowJob: [name=simpleJobToFile]] launched with the following parameters: [{batch-date=1523264509730}]
+2018-04-09 18:01:49,855 INFO [org.springframework.batch.core.job.SimpleStepHandler] - Executing step: [dbToDelimitedFileStep]
+2018-04-09 18:01:49,887 ERROR [org.springframework.batch.core.step.AbstractStep] - Encountered an error executing the step
+org.springframework.beans.NotReadablePropertyException: Invalid property 'firstName' of bean class [com.spring.dto.PlayerVO]: Bean property 'firstName' is not readable or has an invalid getter method: Does the return type of the getter match the parameter type of the setter?
+	at org.springframework.beans.BeanWrapperImpl.getPropertyValue(BeanWrapperImpl.java:726)
+	at org.springframework.beans.BeanWrapperImpl.getPropertyValue(BeanWrapperImpl.java:717)
+	at org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor.extract(BeanWrapperFieldExtractor.java:56)
+	at org.springframework.batch.item.file.transform.ExtractorLineAggregator.aggregate(ExtractorLineAggregator.java:53)
+	at org.springframework.batch.item.file.FlatFileItemWriter.write(FlatFileItemWriter.java:263)
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.writeItems(SimpleChunkProcessor.java:174)
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.doWrite(SimpleChunkProcessor.java:150)
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.write(SimpleChunkProcessor.java:272)
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.process(SimpleChunkProcessor.java:197)
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:74)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:386)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:133)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:264)
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:76)
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:367)
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:214)
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:143)
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:250)
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:195)
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:135)
+	at org.springframework.batch.core.job.flow.JobFlowExecutor.executeStep(JobFlowExecutor.java:61)
+	at org.springframework.batch.core.job.flow.support.state.StepState.handle(StepState.java:60)
+	at org.springframework.batch.core.job.flow.support.SimpleFlow.resume(SimpleFlow.java:144)
+	at org.springframework.batch.core.job.flow.support.SimpleFlow.start(SimpleFlow.java:124)
+	at org.springframework.batch.core.job.flow.FlowJob.doExecute(FlowJob.java:135)
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:293)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:120)
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:114)
+	at com.spring.batch.JobRuntime.launch(JobRuntime.java:29)
+	at com.spring.batch.Launcher.main(Launcher.java:13)
+2018-04-09 18:01:49,903 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - Job: [FlowJob: [name=simpleJobToFile]] completed with the following parameters: [{batch-date=1523264509730}] and the following status: [FAILED]
+2018-04-09 18:01:49,903 INFO [com.spring.batch.JobRuntime] - Exit Status : FAILED
+2018-04-09 18:03:47,635 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_DBtoFile\target\classes\context\application-context.xml]
+2018-04-09 18:03:47,745 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_DBtoFile\target\classes\context\batch-context.xml]
+2018-04-09 18:03:47,791 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Overriding bean definition for bean 'simpleJobToFile': replacing [Generic bean: class [org.springframework.batch.core.configuration.xml.SimpleFlowFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.batch.core.configuration.xml.JobParserJobFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-04-09 18:03:47,791 INFO [org.springframework.context.support.GenericXmlApplicationContext] - Refreshing org.springframework.context.support.GenericXmlApplicationContext@484b61fc: startup date [Mon Apr 09 18:03:47 KST 2018]; root of context hierarchy
+2018-04-09 18:03:48,041 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-04-09 18:03:48,447 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - Job: [FlowJob: [name=simpleJobToFile]] launched with the following parameters: [{batch-date=1523264628337}]
+2018-04-09 18:03:48,572 INFO [org.springframework.batch.core.job.SimpleStepHandler] - Executing step: [dbToDelimitedFileStep]
+2018-04-09 18:03:48,650 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - Job: [FlowJob: [name=simpleJobToFile]] completed with the following parameters: [{batch-date=1523264628337}] and the following status: [COMPLETED]
+2018-04-09 18:03:48,650 INFO [com.spring.batch.JobRuntime] - Exit Status : COMPLETED

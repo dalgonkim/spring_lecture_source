@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="transactionManager"
+	   class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"
+	 />
+	<bean id="jobRepository"
+	      class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean"
+	      p:transactionManager-ref="transactionManager"
+	      />
+	<bean id="jobLauncher"
+	      class="org.springframework.batch.core.launch.support.SimpleJobLauncher"
+	      p:jobRepository-ref="jobRepository"
+	      />
+	
+	<bean id="jobListener"
+		  class="com.spring.batch.JobListener"/>
+	<bean id="stepListener"
+	      class="com.spring.batch.StepListener"/>
+	<bean id="helloTask"
+	      class="com.spring.batch.HelloWorldTasklet"/>
+	<bean id="goodbyeTask"
+		  class="com.spring.batch.GoodbyeTasklet"/>
+		  
+	<batch:job id="simpleJob">
+		<batch:step id="helloStep" next="goodbyeStep">
+			<batch:tasklet ref="helloTask" />			
+			<batch:listeners >
+				<batch:listener ref="stepListener" />
+			</batch:listeners>
+		</batch:step>
+		<batch:step id="goodbyeStep">
+			<batch:tasklet ref="goodbyeTask" />
+			<batch:listeners>
+				<batch:listener ref="stepListener" />
+			</batch:listeners>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<bean id="runtime" class="com.spring.batch.JobRuntime"
+	      p:jobLauncher-ref="jobLauncher"
+	      p:job-ref="simpleJob" 
+	      />
+	
+</beans>
+
+
+
+
+
+
+
+

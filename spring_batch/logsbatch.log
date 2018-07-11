@@ -1,0 +1,46 @@
+2018-04-09 11:39:43,835 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [batch-context.xml]
+2018-04-09 11:39:43,960 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Overriding bean definition for bean 'simpleJob': replacing [Generic bean: class [org.springframework.batch.core.configuration.xml.SimpleFlowFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.batch.core.configuration.xml.JobParserJobFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-04-09 11:39:43,960 INFO [org.springframework.context.support.GenericXmlApplicationContext] - Refreshing org.springframework.context.support.GenericXmlApplicationContext@4e515669: startup date [Mon Apr 09 11:39:43 KST 2018]; root of context hierarchy
+2018-04-09 11:39:44,054 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-04-09 11:39:44,116 WARN [org.springframework.context.support.GenericXmlApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'runtime' defined in class path resource [batch-context.xml]: Cannot resolve reference to bean 'jobLauncer' while setting bean property 'jobLauncher'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'jobLauncer' is defined
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:359)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:108)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1471)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1216)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:762)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480)
+	at org.springframework.context.support.GenericXmlApplicationContext.<init>(GenericXmlApplicationContext.java:70)
+	at com.spring.batch.Launcher.main(Launcher.java:11)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'jobLauncer' is defined
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanDefinition(DefaultListableBeanFactory.java:694)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getMergedLocalBeanDefinition(AbstractBeanFactory.java:1157)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:280)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:351)
+	... 14 more
+2018-04-09 11:40:07,578 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [batch-context.xml]
+2018-04-09 11:40:07,703 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Overriding bean definition for bean 'simpleJob': replacing [Generic bean: class [org.springframework.batch.core.configuration.xml.SimpleFlowFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.batch.core.configuration.xml.JobParserJobFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-04-09 11:40:07,703 INFO [org.springframework.context.support.GenericXmlApplicationContext] - Refreshing org.springframework.context.support.GenericXmlApplicationContext@4e515669: startup date [Mon Apr 09 11:40:07 KST 2018]; root of context hierarchy
+2018-04-09 11:40:07,796 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-04-09 11:40:07,859 INFO [com.spring.batch.JobRuntime] - jobparameters : {batch-date=1523241607859}
+2018-04-09 11:40:07,937 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - Job: [FlowJob: [name=simpleJob]] launched with the following parameters: [{batch-date=1523241607859}]
+2018-04-09 11:40:07,937 INFO [com.spring.batch.JobListener] - >>> Job To be Executed : simpleJob
+2018-04-09 11:40:07,952 INFO [org.springframework.batch.core.job.SimpleStepHandler] - Executing step: [helloStep]
+2018-04-09 11:40:07,952 INFO [com.spring.batch.StepListener] - ### Step Executed : helloStep
+2018-04-09 11:40:07,968 INFO [com.spring.batch.HelloWorldTasklet] - Spring Batch Hellow World Tasklet
+2018-04-09 11:40:07,968 INFO [com.spring.batch.StepListener] - ### Step Executed : helloStep
+2018-04-09 11:40:07,984 INFO [org.springframework.batch.core.job.SimpleStepHandler] - Executing step: [goodbyeStep]
+2018-04-09 11:40:07,984 INFO [com.spring.batch.StepListener] - ### Step Executed : goodbyeStep
+2018-04-09 11:40:07,984 INFO [com.spring.batch.GoodbyeTasklet] - GoodBye! Spring Batch Tasklet!
+2018-04-09 11:40:07,984 INFO [com.spring.batch.StepListener] - ### Step Executed : goodbyeStep
+2018-04-09 11:40:07,984 INFO [com.spring.batch.JobListener] - >>> Job Executed : simpleJob, Batch Status : COMPLETED
+2018-04-09 11:40:07,984 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - Job: [FlowJob: [name=simpleJob]] completed with the following parameters: [{batch-date=1523241607859}] and the following status: [COMPLETED]
+2018-04-09 11:40:07,984 INFO [com.spring.batch.JobRuntime] - Exit status : COMPLETED

@@ -1,0 +1,66 @@
+2018-04-09 14:02:59,714 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\application-context.xml]
+2018-04-09 14:02:59,798 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\batch-context.xml]
+2018-04-09 14:02:59,825 INFO [org.springframework.context.support.GenericXmlApplicationContext] - Refreshing org.springframework.context.support.GenericXmlApplicationContext@484b61fc: startup date [Mon Apr 09 14:02:59 KST 2018]; root of context hierarchy
+2018-04-09 14:03:00,188 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [org/springframework/batch/core/schema-drop-oracle10g.sql]
+2018-04-09 14:03:00,428 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [org/springframework/batch/core/schema-drop-oracle10g.sql] in 240 ms.
+2018-04-09 14:03:00,430 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [org/springframework/batch/core/schema-oracle10g.sql]
+2018-04-09 14:03:00,844 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [org/springframework/batch/core/schema-oracle10g.sql] in 414 ms.
+2018-04-09 14:03:00,844 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [batch_drop_table.sql]
+2018-04-09 14:03:00,848 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [batch_drop_table.sql] in 3 ms.
+2018-04-09 14:03:00,848 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [batch_create_table.sql]
+2018-04-09 14:03:00,873 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [batch_create_table.sql] in 24 ms.
+2018-04-09 17:11:41,658 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\application-context.xml]
+2018-04-09 17:11:41,751 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\batch-context.xml]
+2018-04-09 17:11:41,814 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Overriding bean definition for bean 'simpleJob': replacing [Generic bean: class [org.springframework.batch.core.configuration.xml.SimpleFlowFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.batch.core.configuration.xml.JobParserJobFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-04-09 17:11:41,814 INFO [org.springframework.context.support.GenericXmlApplicationContext] - Refreshing org.springframework.context.support.GenericXmlApplicationContext@484b61fc: startup date [Mon Apr 09 17:11:41 KST 2018]; root of context hierarchy
+2018-04-09 17:11:42,298 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [org/springframework/batch/core/schema-drop-oracle10g.sql]
+2018-04-09 17:11:43,257 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [org/springframework/batch/core/schema-drop-oracle10g.sql] in 959 ms.
+2018-04-09 17:11:43,257 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [org/springframework/batch/core/schema-oracle10g.sql]
+2018-04-09 17:11:43,320 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [org/springframework/batch/core/schema-oracle10g.sql] in 63 ms.
+2018-04-09 17:11:43,320 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [batch_drop_table.sql]
+2018-04-09 17:11:43,353 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [batch_drop_table.sql] in 33 ms.
+2018-04-09 17:11:43,353 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [batch_create_table.sql]
+2018-04-09 17:11:43,384 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [batch_create_table.sql] in 31 ms.
+2018-04-09 17:11:43,462 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-04-09 17:11:43,477 WARN [org.springframework.context.support.GenericXmlApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dbPlayerWriter' defined in file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\batch-context.xml]: Cannot resolve reference to bean 'plyerDAO' while setting bean property 'dao'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'plyerDAO' is defined
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:359)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:108)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1471)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1216)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:762)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480)
+	at org.springframework.context.support.GenericXmlApplicationContext.<init>(GenericXmlApplicationContext.java:70)
+	at com.spring.batch.Launcher.main(Launcher.java:11)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'plyerDAO' is defined
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanDefinition(DefaultListableBeanFactory.java:694)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getMergedLocalBeanDefinition(AbstractBeanFactory.java:1157)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:280)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:351)
+	... 14 more
+2018-04-09 17:12:54,330 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\application-context.xml]
+2018-04-09 17:12:54,424 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [D:\workspace\spring\spring_batch_FiletoDB\target\classes\context\batch-context.xml]
+2018-04-09 17:12:54,489 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Overriding bean definition for bean 'simpleJob': replacing [Generic bean: class [org.springframework.batch.core.configuration.xml.SimpleFlowFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.batch.core.configuration.xml.JobParserJobFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-04-09 17:12:54,489 INFO [org.springframework.context.support.GenericXmlApplicationContext] - Refreshing org.springframework.context.support.GenericXmlApplicationContext@484b61fc: startup date [Mon Apr 09 17:12:54 KST 2018]; root of context hierarchy
+2018-04-09 17:12:54,942 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [org/springframework/batch/core/schema-drop-oracle10g.sql]
+2018-04-09 17:12:55,082 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [org/springframework/batch/core/schema-drop-oracle10g.sql] in 140 ms.
+2018-04-09 17:12:55,082 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [org/springframework/batch/core/schema-oracle10g.sql]
+2018-04-09 17:12:55,130 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [org/springframework/batch/core/schema-oracle10g.sql] in 48 ms.
+2018-04-09 17:12:55,130 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [batch_drop_table.sql]
+2018-04-09 17:12:55,161 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [batch_drop_table.sql] in 31 ms.
+2018-04-09 17:12:55,161 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executing SQL script from class path resource [batch_create_table.sql]
+2018-04-09 17:12:55,161 INFO [org.springframework.jdbc.datasource.init.ScriptUtils] - Executed SQL script from class path resource [batch_create_table.sql] in 0 ms.
+2018-04-09 17:12:55,255 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-04-09 17:12:55,474 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - Job: [FlowJob: [name=simpleJob]] launched with the following parameters: [{batch-date=1523261575349}]
+2018-04-09 17:12:55,505 INFO [org.springframework.batch.core.job.SimpleStepHandler] - Executing step: [delimitedFileToDBStep]
+2018-04-09 17:12:55,583 INFO [org.springframework.batch.core.job.SimpleStepHandler] - Executing step: [fixedFileToDBStep]
+2018-04-09 17:12:55,614 INFO [org.springframework.batch.core.launch.support.SimpleJobLauncher] - Job: [FlowJob: [name=simpleJob]] completed with the following parameters: [{batch-date=1523261575349}] and the following status: [COMPLETED]
+2018-04-09 17:12:55,614 INFO [com.spring.batch.JobRuntime] - Exit Status : COMPLETED

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	
+	<bean id="jobRepository"
+		class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean"
+		p:transactionManager-ref="transactionManager" 
+		p:dataSource-ref="dataSource"
+		p:tablePrefix="BATCH_" 
+		p:isolationLevelForCreate="ISOLATION_SERIALIZABLE"
+		p:databaseType="oracle" />
+		
+	<bean id="jobLauncher"
+		class="org.springframework.batch.core.launch.support.SimpleJobLauncher"
+		p:jobRepository-ref="jobRepository" />
+	
+	<bean id="playerRowMapper"
+	      class="com.spring.item.Mapper.PlayerRowMapper" />
+	
+	<bean id="dbPagingReader" 
+	      class="org.springframework.batch.item.database.JdbcPagingItemReader">
+	      <property name="dataSource" ref="dataSource" />
+	      <property name="queryProvider">
+	      	<bean class="org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean">
+	      		<property name="dataSource" ref="dataSource" />
+	      		<property name="selectClause" value="select player_id,first_name,last_name,position,birth_year,debut_year"/>
+	      		<property name="fromClause" value="from player" />
+	      		<property name="sortKey" value="player_id" />
+	      	</bean>	      
+	      </property>
+	      <property name="pageSize" value="2" />
+	      <property name="rowMapper" ref="playerRowMapper" />
+	</bean>
+	
+	<bean id="delimitedFileWriter"
+		  class="org.springframework.batch.item.file.FlatFileItemWriter">
+		  <property name="resource" value="file:c:/temp/player.csv" />
+		  <property name="lineAggregator">
+		  	<bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+		  		<property name="delimiter" value=","/>
+		  		<property name="fieldExtractor">
+		  			 <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+		  			 	<property name="names" 
+		  			 	          value="id,firstname,lastName,position,birthYear,debutYear"/>		  			 
+		  			 </bean>
+		  		</property>
+		  	</bean>
+		  </property>
+	</bean>
+	
+	<batch:job id="simpleJobToFile">
+		<batch:step id="dbToDelimitedFileStep">
+			<batch:tasklet>
+				<batch:chunk reader="dbPagingReader"
+				             writer="delimitedFileWriter"
+				             commit-interval="2"/>
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+	
+	<bean id="runtime" class="com.spring.batch.JobRuntime"
+	      p:jobLauncher-ref="jobLauncher"
+	      p:job-ref="simpleJobToFile"
+	      />
+</beans>
+
+
+
+
+
+
+
+

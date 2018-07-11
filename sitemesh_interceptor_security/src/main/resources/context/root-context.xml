@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="dataSource"
+	      class="org.apache.commons.dbcp2.BasicDataSource"
+	      p:driverClassName="oracle.jdbc.driver.OracleDriver"
+	      p:url="jdbc:oracle:thin:@localhost:1521:XE"
+	      p:username="spring"
+	      p:password="spring"
+	      />
+	
+	<bean id="sqlSessionFactory"
+	 	  class="org.mybatis.spring.SqlSessionFactoryBean"
+	 	  p:dataSource-ref="dataSource"	 	  
+	 	  p:configLocation="classpath:mybatis/sqlConfig/sqlConfig.xml"
+	 	  p:mapperLocations="classpath:mybatis/sqlMappers/*-Mapper.xml"
+	 	  />
+	<bean id="sqlSession"
+		  class="org.mybatis.spring.SqlSessionTemplate"
+		  c:sqlSessionFactory-ref="sqlSessionFactory" /> 
+	
+	<bean id="memberDAO"
+		  class="com.spring.dao.MemberDAOImpl"
+		  p:sqlSession-ref="sqlSession"
+		  />
+	<bean id="memberService"
+		  class="com.spring.service.MemberServiceImpl"
+		  p:memberDAO-ref="memberDAO"
+		  />
+		  
+	<!-- jasper report bean  -->
+	<bean id="exporterService"
+	      class="com.spring.service.ExporterService"
+	      />
+	<bean id="downloadService"
+		  class="com.spring.service.DownloadService"
+		  p:dataSource-ref="dataSource"
+		  p:exporter-ref="exporterService"
+		  />
+	
+	<bean id="jaejikReportView"
+		  class="com.spring.view.JaejikReportView"
+		  p:dataSource-ref="dataSource"
+		  p:exporter-ref="exporterService"
+		  />
+</beans>
+
+
+
+
+
+

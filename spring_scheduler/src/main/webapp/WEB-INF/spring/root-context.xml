@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="taskScheduler2"
+		  class="com.spring.scheduler.TaskScheduler2"
+		  />
+	<task:scheduler id="printScheduler"/>
+	<task:scheduled-tasks scheduler="printScheduler">
+		<task:scheduled ref="taskScheduler2" 
+						method="testScheduler"
+						cron="*/3 * * * * *"/>
+	</task:scheduled-tasks>	
+</beans>
+
+
+
+
+

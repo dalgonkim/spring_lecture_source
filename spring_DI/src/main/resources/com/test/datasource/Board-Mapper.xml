@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="BoardMapper">
+	
+	<select id="selectBoardAll" resultType="board" >
+		select * from tbl_board
+	</select>
+	
+	<update id="insertBoard" >
+		insert into tbl_board(bno,title,content,writer)
+		values(board_seq.nextval,#{title},#{content},#{writer})
+	</update>
+	
+</mapper>
+
+
+
+
+
+

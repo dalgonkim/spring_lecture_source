@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 인증처리 -->
+	<authentication-manager id="at-manager">
+		<authentication-provider>
+			<!-- <user-service>
+				<user name="user" password="user"  authorities="ROLE_USER"/>
+				<user name="manager" password="manager"  authorities="ROLE_MANAGER"/>
+				<user name="admin" password="admin"  authorities="ROLE_ADMIN,ROLE_MANAGER,ROLE_USER0"/>
+			</user-service> -->
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query=
+					"select id as username,pwd as password, enabled
+					 from tbl_member
+					 where id=?"
+				authorities-by-username-query=
+					"select id as username,authority
+					 from tbl_authorities
+					 where id=?"
+			 />
+		</authentication-provider>
+	</authentication-manager>
+	
+	<!-- 권한처리 -->
+	<http use-expressions="true"
+		  authentication-manager-ref="at-manager"
+		  pattern="/admin/**">
+		  <access-denied-handler error-page="/security/accessDenied"/>
+		  <intercept-url pattern="/admin/commons/log*" access="permitAll"/>
+		  <intercept-url pattern="/admin/**" 
+		  				 access="hasAuthority('ROLE_ADMIN')" />
+		  <form-login
+		  		login-page="/admin/commons/loginForm"
+		  		login-processing-url="/admin/commons/login"
+		  		username-parameter="id"
+		  		password-parameter="pwd"
+		  		default-target-url="/admin/main"
+		  		authentication-success-handler-ref="adminLoginSuccessSecurityHandler"
+		  		authentication-failure-handler-ref="adminLoginFailureSecurityHandler"
+		  		/>
+		  <logout
+		  		logout-url="/admin/commons/logout"
+		  		invalidate-session="true"
+		  		logout-success-url="/index"
+		  />
+		  
+	</http>
+	
+	<http use-expressions="true" 
+		  authentication-manager-ref="at-manager"
+		  pattern="/**">
+		<access-denied-handler error-page="/security/accessDenied"/>
+		
+		<intercept-url pattern="/manager/**" 
+					   access="hasAuthority('ROLE_MANAGER')"/>
+		<intercept-url pattern="/member/**" 
+					   access="hasAuthority('ROLE_USER')"/>
+		<intercept-url pattern="/home/**" 
+					   access="isAuthenticated()"/>
+		<intercept-url pattern="/**" 
+					   access="permitAll"/>
+		<form-login 
+			login-page="/commons/loginForm"
+			login-processing-url="/commons/login"
+			username-parameter="id"
+			password-parameter="pwd"
+			
+			authentication-success-handler-ref="userLoginSuccessSecurityHandler"
+			authentication-failure-handler-ref="userLoginFailureSecurityHandler"
+			 />
+		<logout 
+				logout-url="/commons/logout"
+				logout-success-url="/index"
+				invalidate-session="true"/>
+					   
+	</http>
+	
+	<beans:bean id="userLoginSuccessSecurityHandler"
+	            class="com.spring.security.LoginSuccessSecurityHandler"
+	            p:defaultTargetUrl="/index"
+	            />
+	<beans:bean id="adminLoginSuccessSecurityHandler"
+	            class="com.spring.security.LoginSuccessSecurityHandler"
+	            p:defaultTargetUrl="/admin/main"
+	            />
+	<beans:bean id="userLoginFailureSecurityHandler"
+				class="com.spring.security.LoginFailureSecurityHandler"
+				p:defaultFailureUrl="/commons/loginForm"
+				p:useForward="true"
+				/>
+	<beans:bean id="adminLoginFailureSecurityHandler"
+				class="com.spring.security.LoginFailureSecurityHandler"
+				p:defaultFailureUrl="/admin/commons/loginForm"
+				p:useForward="true"
+				/>	
+</beans:beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
