@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+
+*{
+	margin:0;
+	padding:0;
+	
+}
+
+ul li{
+	list-style:none;
+	
+	line-height:50px;
+}
+
+input[type=button],input[type=submit],button{
+	color:#000088;
+	font-weight:bold;
+	width:100px;
+	height:35px;
+	background:#eeeeff;
+}
+article{
+	width:80%;
+	margin:0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

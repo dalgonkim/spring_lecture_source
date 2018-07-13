@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="productDao" class="com.test.board.dao.impl.ProductDAOImpl"
+		p:client-ref="sqlMapClient" />
+
+	<bean id="productSevice" class="com.test.board.service.impl.ProductServiceImpl"
+		p:productDAO-ref="productDao" />
+	
+	
+	<bean id="memberDAO" class="com.test.board.dao.impl.MemberDAOImpl" 
+		p:client-ref="sqlMapClient"
+	/>
+	<bean id="memberService" class="com.test.board.service.impl.MemberServiceImpl"
+	p:memberDAO-ref="memberDAO" 
+	/>
+		
+	
+	<bean id="serviceProfiler" class="com.test.aop.ServiceProfiler"
+		p:client-ref="sqlMapClient" 
+	/>
+	
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED"/>
+			<tx:method name="insert*" rollback-for="Exception"/>
+			<tx:method name="update*" rollback-for="Exception"/>
+			<tx:method name="delete*" rollback-for="Exception"/>
+			<tx:method name="get*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut 
+		expression="execution(public * com.test.board.service.impl..*ServiceImpl.*(..))" 
+		id="servicePublicMethod"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePublicMethod"/>
+	</aop:config>
+<!-- 
+	<aop:config>
+		<aop:aspect id="serviceAspect" ref="serviceProfiler">
+			<aop:pointcut id="publicMethod1"
+				expression="execution(public * com.test.board.service.impl..insert*(..))" />		
+			<aop:pointcut id="publicMethod2"
+				expression="execution(public * com.test.board.service.impl..update*(..))" />
+			<aop:pointcut id="publicMethod3"
+				expression="execution(public * com.test.board.service.impl..delete*(..))" />
+
+			<aop:around pointcut-ref="publicMethod1" method="trace" />
+			<aop:around pointcut-ref="publicMethod2" method="trace" />
+			<aop:around pointcut-ref="publicMethod3" method="trace" />
+		</aop:aspect>
+	</aop:config> -->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+

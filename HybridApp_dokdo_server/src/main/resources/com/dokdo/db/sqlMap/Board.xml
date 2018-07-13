@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Board">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="board" type="com.dokdo.dto.BoardVO" />
+	
+	<select id="getBoardList" parameterClass="str" resultClass="board">
+		select * 
+		from board
+		where board_title like '%'||#board_title#||'%'	
+		order by board_id desc	
+	</select>
+	
+	<select id="getBoard" parameterClass="int" resultClass="board" >
+		select *
+		from board
+		where board_id=#board_id#
+	</select>
+	
+	<update id="insertBoard" parameterClass="board">
+		insert into board(board_id,board_title,board_content)
+		values(board_seq.nextval,#board_title#,#board_content#)
+	</update>
+	
+	<update id="updateBoard" parameterClass="board">
+		update board set board_title=#board_title#,board_content=#board_content#,
+		board_indate=#board_indate#
+		where board_id=#board_id#
+		
+	</update>
+	
+	<update id="deleteBoard" parameterClass="int">
+		delete from board
+		where board_id=#board_id#
+	</update>	
+</sqlMap>
+
+
+
+
+
+
+
+

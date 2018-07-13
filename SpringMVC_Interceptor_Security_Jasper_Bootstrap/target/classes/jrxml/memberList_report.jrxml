@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="memberList_report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="06aa7e5b-f6d9-45d0-8dce-526f9de85180">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ORACLE.spring"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM "TBL_MEMBER"]]>
+	</queryString>
+	<field name="ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="PWD" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PWD"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMAIL"/>
+	</field>
+	<field name="REGDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="REGDATE"/>
+	</field>
+	<field name="ENABLED" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ENABLED"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="5533204f-0a71-4387-91d2-73c5e532323b"/>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="6c20b02c-0d33-4a5e-823b-66563c22a07d"/>
+					<textElement textAlignment="Right">
+						<font fontName="맑은 고딕" size="14" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[회원정보]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="19" y="19" width="261" height="51" forecolor="#FFFFFF" uuid="f892d5bf-cf35-46d5-88e6-1bbb828d9df2"/>
+					<textElement>
+						<font fontName="맑은 고딕" size="35" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[회원 리스트]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="80c15ae6-14d0-4cfe-ba46-f28e32c9b1d1"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a2345cfa-9e04-4fdf-b3b7-5a0540809725">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7f7fd5d6-9451-4241-ae4a-731927ac999a"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[아이디]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="92" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="67188a0f-8ea4-4f1d-844c-662432e74445">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d60d6b1-028d-452c-8cbe-bfc729049d6c"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[패스워드]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="184" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="272730f4-1dad-4e0d-928a-19c0d2b8bdda">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c9450bf-ebb3-4f5a-b3e9-880975785b51"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[이름]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="bf16f3f3-ef6b-4dba-857f-5aa1670e209e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2babbd7a-17a2-4437-ab2f-fd2feb1d3aa4"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[이메일]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="368" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="adecbd5e-fd17-40a0-9437-4a2952be9e47">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f4dcbb78-863a-4a5b-9fef-3c383401a599"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[등록일]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="460" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d408a68b-012c-4536-bd2a-5d1dd2ef1603">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b99560f1-30cd-4632-9b6a-601ad6d16833"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="14" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[사용유무]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="184acc65-1271-4e06-aaa0-6a57b7b0ba01"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="92" height="20" uuid="aa885a79-ea54-46ca-93f0-6b73d9eb8c92">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7f7fd5d6-9451-4241-ae4a-731927ac999a"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="92" y="0" width="92" height="20" uuid="94a6db97-7607-47fa-9e95-714d9d2ddead">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d60d6b1-028d-452c-8cbe-bfc729049d6c"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PWD}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="184" y="0" width="92" height="20" uuid="b3adf4ea-0ca8-4293-bc82-a919c03b5121">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c9450bf-ebb3-4f5a-b3e9-880975785b51"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}!=null ? $F{NAME} : "N/A"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="276" y="0" width="92" height="20" uuid="f250cea0-a1a7-496a-91e9-f31bc1ee2dbe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2babbd7a-17a2-4437-ab2f-fd2feb1d3aa4"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMAIL}!=null ? $F{EMAIL} : "N/A"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="368" y="0" width="92" height="20" uuid="ce1837f4-e844-4142-bacb-80243d007769">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f4dcbb78-863a-4a5b-9fef-3c383401a599"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("yyyy-MM-dd").format($F{REGDATE})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="460" y="0" width="92" height="20" uuid="c53a90ff-2522-44fa-b042-986efa6a4611">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b99560f1-30cd-4632-9b6a-601ad6d16833"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENABLED}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="70c8dfde-c681-4cf2-9af0-f8f5ce436158"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="59784721-e6f2-4a24-a966-583bd7d566c7"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="49dffaa5-49af-49d6-9cc2-12ec268c2e57"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- DAO -->
+	<bean id="productDAO" class="com.nonage.dao.iBatis.ProductDAO_iBatis" >
+		<property name="client" ref="sqlMapClient"/>
+	</bean>
+	<bean id="memberDAO" class="com.nonage.dao.iBatis.MemberDAO_iBatis" >
+		<property name="client" ref="sqlMapClient"/>
+	</bean>
+	<bean id="addressDAO" class="com.nonage.dao.iBatis.AddressDAO_iBatis" >
+		<property name="client" ref="sqlMapClient"/>
+	</bean>
+	<bean id="orderDAO" class="com.nonage.dao.iBatis.OrderDAO_iBatis" >
+		<property name="client" ref="sqlMapClient"/>
+	</bean>
+	<bean id="qnaDAO" class="com.nonage.dao.iBatis.QnaDAO_iBatis" >
+		<property name="client" ref="sqlMapClient"/>
+	</bean>
+	<bean id="cartDAO" class="com.nonage.dao.iBatis.CartDAO_iBatis" >
+		<property name="client" ref="sqlMapClient"/>
+	</bean>
+	<bean id="workerDAO" class="com.nonage.dao.iBatis.WorkerDAO_iBatis" >
+		<property name="client" ref="sqlMapClient"/>
+	</bean>
+	
+	<!-- Service -->
+	<bean id="commonService" class="com.nonage.service.CommonService" >
+		<property name="productDAO" ref="productDAO"/>
+		<property name="memberDAO" ref="memberDAO" />
+		<property name="addressDAO" ref="addressDAO" />
+	</bean>
+	<bean id="productService" class="com.nonage.service.ProductService" >
+		<property name="productDAO" ref="productDAO" />
+	</bean>
+	<bean id="memberService" class="com.nonage.service.MemberService" >
+		<property name="memberDAO" ref="memberDAO" />
+		<property name="orderDAO" ref="orderDAO" />
+		<property name="qnaDAO" ref="qnaDAO" />
+	</bean>
+	<bean id="orderService" class="com.nonage.service.OrderService" >
+		<property name="cartDAO" ref="cartDAO" />		
+		<property name="orderDAO" ref="orderDAO" />
+	</bean>
+	<bean id="QnaService" class="com.nonage.service.QnaService" >
+		<property name="qnaDAO" ref="qnaDAO" />		
+	</bean>
+	
+	
+	
+	
+	
+	
+</beans>

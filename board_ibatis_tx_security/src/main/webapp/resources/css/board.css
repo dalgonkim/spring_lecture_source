@@ -1,0 +1,102 @@
+@CHARSET "UTF-8";
+
+*{
+	margin:0;
+	padding:0;
+	list-style-type:none;	
+}
+
+a{
+	text-decoration:none;
+	color:black;	
+}
+a:hover{
+	font-weight:bold;
+	color:blue;
+}
+div#mListWrap,div#listHead{	
+	min-width:420px;
+	max-width:960px;
+	width:85%;
+	margin:0 auto;
+	
+	border:1px solid black;
+	border-top:none;
+	border-right:none;
+}
+
+div#listHead{
+	border:none;
+}
+
+div#mListWrap{
+	text-align:center
+}
+
+div#mListWrap>ul{
+	border-top:1px solid black;
+	overflow:hidden;
+}
+div#mListWrap>ul>li{	
+	float:left;
+	border-right:1px solid black;
+	box-sizing:border-box;
+}
+
+div#mListWrap>ul>li{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+div#mListWrap>ul>li:nth-child(1){
+	width:22%;
+}
+div#mListWrap>ul>li:nth-child(2){
+	width:22%;
+}
+div#mListWrap>ul>li:nth-child(3){
+	width:15%;
+}
+div#mListWrap>ul>li:nth-child(4){
+	width:24%;
+}
+div#mListWrap>ul>li:nth-child(5){
+	width:17%;
+}
+div#mListWrap>ul#title>li{
+	font-weight:bold;
+}
+
+ul.title{
+	font-weight:bold;
+	background:#f1f1ff;
+}
+
+
+div#listHead{
+	overflow:hidden;
+	margin-bottom:30px;
+	
+}
+div#listHead>button#writeBtn{
+	float:right;
+}
+
+div#listHead>h1{
+	height:100px;
+	line-height:100px;
+	text-align:center;
+	width:80%;
+	margin:0 auto;
+	padding:0 10px;
+}
+
+
+
+
+
+
+
+
+
+

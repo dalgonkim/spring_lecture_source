@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<http pattern="/**/*.js" security="none" />
+	<http pattern="/**/*.css" security="none" />
+	<http pattern="/**/product_images" security="none" />
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select userid as username,password,enabled
+										 from member_view
+										 where userid=?"
+				authorities-by-username-query="select userid as username,authority
+											   from member_view
+											   where userid=?"
+			/>
+		</authentication-provider>
+	</authentication-manager>
+	
+	<http pattern="/**" use-expressions="true" entry-point-ref="customAuthenticationEntryPoint" >
+		<request-cache ref="nullRequestCache"/>
+		<access-denied-handler error-page="/security/accessDenied"/>
+		<intercept-url pattern="/member/loginForm" access="permitAll"/>
+		<intercept-url pattern="/member/**" access="hasAnyRole('ROLE_USER,ROLE_ADMIN')"/>
+		<intercept-url pattern="/product/**" access="hasAnyRole('ROLE_USER,ROLE_ADMIN')"/>
+		<intercept-url pattern="/order/**" access="hasAnyRole('ROLE_USER,ROLE_ADMIN')"/>
+		<intercept-url pattern="/**" access="permitAll"/>
+		
+		<form-login 
+					login-processing-url="/member/login"
+					username-parameter="userid"
+					password-parameter="password"
+					
+					
+					authentication-success-handler-ref="loginSuccessHandler"					
+					authentication-failure-handler-ref="loginFailureHandler"
+		/>
+		<logout 
+			invalidate-session="true"
+			logout-url="/member/logout"/>
+	</http>
+	
+	<beans:bean id="customAuthenticationEntryPoint" 
+		class="com.test.board.security.CustomAuthenticationEntryPoint" 
+		p:loginFormPath="/member/loginForm"/>
+		
+	<beans:bean id="nullRequestCache"
+		class="org.springframework.security.web.savedrequest.NullRequestCache" />
+	
+	<beans:bean id="loginSuccessHandler" 
+		class="com.test.board.security.LoginSuccessHandler"
+		p:defaultTargetUrl="/index"
+		/>
+	<beans:bean id="loginFailureHandler" 
+		class="com.test.board.security.LoginFailureHandler"
+		p:loginFormPath="/member/loginForm"
+	/>
+
+</beans:beans>
+
+
+
+
+
+
+
+
+
+

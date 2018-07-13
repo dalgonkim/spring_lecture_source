@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="memberDetail_report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a184b559-61fd-4b72-adce-4276a53a135a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ORACLE.spring"/>
+	<parameter name="id" class="java.lang.String"/>
+	<parameter name="imagePath" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select * from tbl_member where id=$P{id}]]>
+	</queryString>
+	<field name="ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="PWD" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PWD"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMAIL"/>
+	</field>
+	<field name="REGDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="REGDATE"/>
+	</field>
+	<field name="ENABLED" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ENABLED"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="81" backcolor="#5C57FF" uuid="a9f1e701-4659-4227-abcc-f76a093ca0f2"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="147" y="15" width="261" height="51" forecolor="#FFFFFF" uuid="4a5fa50f-213c-4679-9747-b061ffb3933b"/>
+				<textElement textAlignment="Center">
+					<font fontName="맑은 고딕" size="35" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[개인 정보 조회]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="337" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="50" width="81" height="31" uuid="2ae7230d-8c9f-47ac-886d-acf4efaf952e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[아이디 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="100" width="81" height="31" uuid="3bb2b64e-aebd-44e7-ba09-7b04e393156a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[패스워드 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="150" width="81" height="31" uuid="97b24b7c-7a2c-4907-86cf-3aeda01b557e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[이름 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="200" width="81" height="31" uuid="cab7ef2a-549c-44f8-a590-9e938808fca6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[이메일 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="250" width="81" height="31" uuid="90fdb400-0264-4c85-a8ea-9d90f48d6a61"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[등록일 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="300" width="81" height="31" uuid="164af1ce-783a-4c8c-935e-eb7c431d30c7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[사용유무 :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="50" width="100" height="30" uuid="f40b6c07-6e53-4d0f-ad94-d3dd890aea20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="100" width="100" height="30" uuid="a773586c-e552-4568-a098-912a8d9eb48a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PWD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="153" width="100" height="30" uuid="78099af6-9559-4722-9fa8-7a359d754711"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="200" width="100" height="30" uuid="9293491b-a50d-4b7b-a508-94d42b47e227"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="250" width="100" height="30" uuid="c4b2d15a-8180-4e33-bff8-604cb8a5df71"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REGDATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="300" width="100" height="30" uuid="de4b2f5e-a75a-4878-8e38-68e5a6331259"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="맑은 고딕" size="15" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENABLED}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="260" y="49" width="291" height="281" uuid="94a96b5c-6eef-448f-ba15-14675485ca13"/>
+				<imageExpression><![CDATA[$P{imagePath}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

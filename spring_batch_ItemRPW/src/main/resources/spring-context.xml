@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+    http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+    
+    <bean id="transactionManager"
+		class="org.springframework.batch.support.transaction.ResourcelessTransactionManager">
+	</bean>
+	
+	<!-- 1. Job Repository - IN-MEMORY Repository -->
+    <bean id="jobRepository"
+		class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+    
+    <!-- 2. Launch Job from a Repository -->
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+    	<property name="jobRepository" ref="jobRepository" />
+    </bean>
+    
+    <!-- 3. Define Custom ItemReader -->
+    <bean id="customReader" class="com.test.batch.CustomItemReader">
+        <property name="itemList" >
+            <list>
+                <value>***Steve</value>
+                <value>***Mike</value>
+                <value>Joseph</value>
+                <value>+++Juily</value>
+            </list>
+        </property>
+    </bean>
+ 
+    <!-- 4. Define Custom ItemProcessor -->
+    <bean id="customProcessor" class="com.test.batch.CustomItemProcessor" />
+ 
+    <!-- 5. Define Custom ItemWriter -->
+    <bean id="customWriter" class="com.test.batch.CustomItemWriter" />
+        
+    <!-- 6. Finally Job Defined -->
+    <batch:job id="simpleJob">    
+    	<batch:step id="readWrtieStep">
+    		<batch:tasklet>
+    			<batch:chunk reader="customReader" processor="customProcessor" writer="customWriter" commit-interval="2"/>
+    		</batch:tasklet>
+    	</batch:step>
+    </batch:job>
+    
+    <!-- 7. Custom Job Launcher Class -->
+    <bean id="runtime" class="com.test.batch.JobRuntime">
+    	<property name="jobLauncher" ref="jobLauncher" />
+    	<property name="job" ref="simpleJob" />
+    </bean>    
+    
+    
+</beans>
