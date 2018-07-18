@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
+
+
 
 <%@include file="../include/header.jsp"%>
 
@@ -51,6 +52,8 @@ button#searchBtn{
 				<div class='box-body'>
 					<ul>
 						<li>
+							<button type="button" id="pdfBtn" class="btn btn-warning" >PDF</button>
+							<button type="button" id="excelBtn" class="btn btn-warning" >Excel</button>
 							<button id='newBtn' class="btn btn-primary" onclick="javascript:location.href='register';">New Board</button>
 						</li>
 						<li>
@@ -151,18 +154,15 @@ button#searchBtn{
 <!-- /.content -->
 
 <form id="jobForm">
-  <input type='hidden' name="page" value=${pageMaker.cri.page}>
-  <input type='hidden' name="perPageNum" value=${pageMaker.cri.perPageNum}>
+  <input type='hidden' name="page" value="${pageMaker.cri.page}"/>
+  <input type='hidden' name="perPageNum" value="${pageMaker.cri.perPageNum}"/>
+  <input type='hidden' name="searchType" value="${cri.searchType}"/>
+  <input type='hidden' name="keyword" value="${cri.keyword}"/>
 </form>
 
 
 <script>
-	var result = '${msg}';
-
-	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
-	}
-	
+		
 	$(".link li a").on("click", function(event){
 		
 		event.preventDefault(); 
@@ -171,7 +171,7 @@ button#searchBtn{
 		
 		var jobForm = $("#jobForm");
 		jobForm.find("[name='page']").val(targetPage);
-		jobForm.attr("action","listPage").attr("method", "get");
+		jobForm.attr("action","listPage").attr("method", "get");		
 		jobForm.submit();
 	});
 	
@@ -182,6 +182,14 @@ button#searchBtn{
 					   +$("select option:selected").val()
 					   +"&keyword="
 					   +$('#keywordInput').val();
+	});
+	
+	
+	$('#pdfBtn').on('click',function(event){
+		location.href="listPage/pdf?page=${pageMaker.cri.page}&perPageNum=${pageMaker.cri.perPageNum}";
+	});
+	$('#excelBtn').on('click',function(event){
+		location.href="listPage/excel?page=${pageMaker.cri.page}&perPageNum=${pageMaker.cri.perPageNum}";		
 	});
 </script>
 
