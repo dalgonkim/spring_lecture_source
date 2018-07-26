@@ -1,16 +1,17 @@
 package com.spring.controller;
 
 public class CreditRequest {
-	private String sndGoodName;
+	private String sndGoodname;
 	private String sndAmount;
 	private String sndOrdername;
 	private String sndEmail;
 	private String sndMobile;
-	public String getSndGoodName() {
-		return sndGoodName;
+	
+	public String getSndGoodname() {
+		return sndGoodname;
 	}
-	public void setSndGoodName(String sndGoodName) {
-		this.sndGoodName = sndGoodName;
+	public void setSndGoodname(String sndGoodname) {
+		this.sndGoodname = sndGoodname;
 	}
 	public String getSndAmount() {
 		return sndAmount;
@@ -38,9 +39,10 @@ public class CreditRequest {
 	}
 	@Override
 	public String toString() {
-		return "CreditRequest [sndGoodName=" + sndGoodName + ", sndAmount=" + sndAmount + ", sndOrdername="
+		return "CreditRequest [sndGoodname=" + sndGoodname + ", sndAmount=" + sndAmount + ", sndOrdername="
 				+ sndOrdername + ", sndEmail=" + sndEmail + ", sndMobile=" + sndMobile + "]";
 	}
+	
 	
 	
 	
