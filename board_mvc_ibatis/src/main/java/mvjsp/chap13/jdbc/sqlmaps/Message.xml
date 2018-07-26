@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Message">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="message" type="mvjsp.chap13.model.Message" />
+
+	<!-- List<Message> selectList(Connection conn, int firstRow, int endRow) -->
+	<select id="getMessageList" resultClass="message">
+		select * from guestbook_message order by message_id desc
+	</select>
+	<!-- Message select(Connection conn, int messageId) -->
+	<select id="getMessage" parameterClass="int" resultClass="message" >
+		select * from guestbook_message where message_id=#message_id#
+	</select>
+	<!-- int selectCount(Connection conn) -->
+	<select id="messageCount" resultClass="int">
+		select count(*) from guestbook_message
+	</select>
+	
+	<!-- int insert(Connection conn, Message message) -->
+	<update id="insertMessage" parameterClass="message">
+		insert into guestbook_message (guest_name, password, message) 
+		values (#guest_name#, #password#, #message#)
+	</update>
+	<!-- int update(Connection conn, Message message) -->
+	<update id="updateMessage" parameterClass="message">
+		update guestbook_message set guest_name=#guest_name#,
+		password=#password#,message=#message# 
+				where message_id=#message_id#
+	</update>
+	<!-- int delete(Connection conn, int messageId) -->
+	<update id="deleteMessage" parameterClass="int">
+		delete * from guestbook_message where message_id=#message_id#
+	</update>
+</sqlMap>
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Member">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="member" type="mvjsp.chap13.model.Member" />
+
+	<!-- List getMemberList(Connection con, int firstRow, int endRow) -->
+	<select id="getMemberList" resultClass="member">
+		select * from member
+	</select>	
+	
+	<!-- Member getMember(Connection con, String id) -->
+	<select id="getMember" parameterClass="str" resultClass="member">
+		select * from member where id=#id#
+	</select>
+	
+	<!-- int selectCount(Connection conn) -->
+	<select id="selectCount" resultClass="int">
+		select count(*) from member
+	</select>
+	
+	<!-- void insertMember(Connection con, Member member) -->
+	<update id="insertMember" parameterClass="member" >
+		insert into member(id,pwd) values(#id#,#pwd#)
+	</update>
+
+	<!-- void updateMember(Connection con, Member member) -->
+	<update id="updateMember" parameterClass="member" >
+		update member set pwd=#pwd# where id=#id#
+	</update>	
+	
+	<!-- void deleteMember(Connection con, String id) -->
+	<update id="deleteMember" parameterClass="str">
+		delete from member where id=#id#
+	</update>
+</sqlMap>
+
+
+
+
+
+
+
+

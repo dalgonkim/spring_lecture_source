@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Member">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="member" type="com.nonage.dto.MemberVO" />
+	
+	<select id="getMemberList" parameterClass="str" resultClass="member">
+		select * 
+		from member_view
+		where name like '%'||#name#||'%'		
+	</select>
+	
+	<select id="getMember" parameterClass="str" resultClass="member" >
+		select *
+		from member_view
+		where userid=#userid#
+	</select>
+	
+	<update id="insertMember" parameterClass="member">
+		insert into member(email,name,password,userid)
+		values(#email#,#name#,#password#,#userid#)
+	</update>
+	
+	<update id="insertAuth" parameterClass="member">
+		insert into authorities(userid,authority)
+		values(#userid#,#authority#)
+	</update>
+	
+	<update id="updateMember" parameterClass="member">
+		update member set email=#email#,name=#name#,enabled=#enabled#,
+		password=#password#
+		where userid=#userid#
+		
+	</update>
+	
+	<update id="updateAuth" parameterClass="member">
+		update authorities set authority=#authority#
+		where userid=#userid#
+	</update>
+	
+	<update id="deleteMember" parameterClass="str">
+		delete from member
+		where userid=#userid#
+	</update>	
+	<update id="deleteAuth" parameterClass="str">
+		delete from authorities
+		where userid=#userid#	
+	</update>
+	
+</sqlMap>
+
+
+
+
+
+
+
+
