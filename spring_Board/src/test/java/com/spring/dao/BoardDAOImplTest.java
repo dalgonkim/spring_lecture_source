@@ -17,8 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.board.dao.BoardDAO;
-import com.board.dto.BoardVO;
+import com.spring.dto.BoardVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:context/root-context.xml")
@@ -87,7 +86,7 @@ public class BoardDAOImplTest {
 		
 		board.setTitle("title888");
 		
-		dao.updateBorad(board);	
+		dao.updateBoard(board);	
 		
 		board=dao.selectBoardByBNO(bno);
 		

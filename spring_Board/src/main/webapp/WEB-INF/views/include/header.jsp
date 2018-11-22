@@ -1,297 +1,234 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 
 
-   
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- Bootstrap 3.3.4 -->
-    <link href="<%=request.getContextPath() %>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons -->
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="<%=request.getContextPath() %>/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins 
-         folder instead of downloading all of them to reduce the load. -->
-    <link href="<%=request.getContextPath() %>/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-  </head>
-      <!-- jQuery 2.1.4 -->
-    <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    
-  <body class="hold-transition skin-blue sidebar-mini">
+  <title><decorator:title default="관리자페이지" /></title>
+  <decorator:head />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugins/font-awesome/css/font-awesome.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/dist/css/adminlte.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- jQuery -->
+<script src="<%=request.getContextPath()%>/resources/plugins/jquery/jquery.min.js"></script>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->  
+</head>
+<body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
-  <!-- Main Header -->
-  <header class="main-header">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<%=request.getContextPath() %>/member/list" class="nav-link">
+	      회원관리
+        </a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<%=request.getContextPath() %>/product/list" 
+        		  class="nav-link">상품관리</a>
+      </li>
+        <li class="nav-item d-none d-sm-inline-block">
+        <a href="<%=request.getContextPath() %>/sboard/listPage" 
+        		  class="nav-link">자유게시판</a>
+      </li>
+    </ul>
 
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+    <!-- SEARCH FORM -->
+    <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-comments-o"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="<%=request.getContextPath()%>/resources/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fa fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="<%=request.getContextPath()%>/resources/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fa fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="<%=request.getContextPath()%>/resources/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fa fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-bell-o"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fa fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fa fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fa fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+            class="fa fa-th-large"></i></a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="<%=request.getContextPath()%>/resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">관리자 페이지</span>
     </a>
 
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
-              <li>
-                <!-- inner menu: contains the messages -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <!-- User Image -->
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <!-- Message title and timestamp -->
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <!-- The message -->
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-                <!-- /.menu -->
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
-          <!-- /.messages-menu -->
-
-          <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- Inner Menu: contains the notifications -->
-                <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <!-- end notification -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks Menu -->
-          <li class="dropdown tasks-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- Inner menu: contains the tasks -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <!-- Task title and progress text -->
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <!-- The progress bar -->
-                      <div class="progress xs">
-                        <!-- Change the css width attribute to simulate progress -->
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
-          <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-
+    <!-- Sidebar -->
+    <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="<%=request.getContextPath()%>/resources/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <div class="info">
+          <a href="#" class="d-block">${loginUser.name }님 반갑습니다!</a>
+          <a href="<%=request.getContextPath()%>/commons/logout">
+          	<button type="button"
+          	        class="btn btn-primary btn-block btn-flat">Logout</button>
+          </a>
         </div>
       </div>
-
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-        </div>
-      </form>
-      <!-- /.search form -->
 
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header"><strong>관리자 메뉴</strong></li>
-        <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="sboard/listPage"><i class="fa fa-link"></i> <span>게시판 관리</span></a></li>
-        <li><a href="product/listPage"><i class="fa fa-link"></i> <span>상품 관리</span></a></li>
-        <li class="treeview">
-          <a href="member/listPage"><i class="fa fa-link"></i> <span>회원 관리</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
-        </li>
-      </ul>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+                Starter Pages
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link active">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Active Page</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Inactive Page</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-th"></i>
+              <p>
+                Simple Link
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
       <!-- /.sidebar-menu -->
-    </section>
+    </div>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Board Management
-            <small>Preview</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
-          </ol>
-        </section>
-
-<script>
-	$('ul.sidebar-menu li a').on('click',function(event){
-		
-		event.preventDefault();
-		
-		var uri=$(this).attr("href");
-		
-		self.location="<c:url value="/" />"+uri;
-	});
-</script>
-
-
-
-
-
-
-
-
-
-
-
- 
+    <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">

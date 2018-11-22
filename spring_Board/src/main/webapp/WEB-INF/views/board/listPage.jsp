@@ -4,7 +4,25 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 
-<%@include file="../include/header.jsp"%>
+
+<head>
+	<title>자유게시판</title>
+</head>
+
+<body>
+<!-- Main content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+   자유게시판
+    <small>(우리의 이야기)</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
+
 
 <!-- Main content -->
 <section class="content">
@@ -61,13 +79,13 @@
 						<ul class="pagination">
 
 							<c:if test="${pageMaker.prev}">
-								<li><a
+								<li ><a
 									href="listPage${pageMaker.makeQuery(pageMaker.startPage - 1) }">&laquo;</a></li>
 							</c:if>
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
-								<li
+								<li 
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
 									<a href="listPage${pageMaker.makeQuery(idx)}">${idx}</a>
 								</li>
@@ -80,35 +98,6 @@
 
 						</ul>
 					</div>
-					
-					
-
-					<div class="text-center">
-						<ul class="pagination link">
-
-							<c:if test="${pageMaker.prev}">
-								<li><a href="${pageMaker.startPage - 1}">&laquo;</a></li>
-							</c:if>
-
-							<c:forEach begin="${pageMaker.startPage }"
-								end="${pageMaker.endPage }" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="${idx}">${idx}</a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a
-									href="${pageMaker.endPage +1}">&raquo;</a></li>
-							</c:if>
-
-						</ul>
-						
-						
-					</div>
-
-
 				</div>
 				<!-- /.box-footer-->
 			</div>
@@ -147,4 +136,4 @@
 	
 </script>
 
-<%@include file="../include/footer.jsp"%>
+</body>

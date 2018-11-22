@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.board.dao.BoardDAO;
-import com.board.dto.BoardVO;
-import com.board.dto.Criteria;
-import com.board.dto.SearchCriteria;
+import com.spring.controller.Criteria;
+import com.spring.controller.SearchCriteria;
+import com.spring.dao.BoardDAO;
+import com.spring.dto.BoardVO;
 
 public class MockBoardDAOImpl implements BoardDAO {	
 	
@@ -84,7 +84,7 @@ public class MockBoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void updateBorad(BoardVO board) throws Exception {
+	public void updateBoard(BoardVO board) throws Exception {
 		
 		BoardVO oldBoard=db.get(board.getBno()+"");
 		board.setBno(oldBoard.getBno());
@@ -118,23 +118,7 @@ public class MockBoardDAOImpl implements BoardDAO {
 		return boardList;
 	}
 
-	@Override
-	public List<BoardVO> selectBoardPage(int page) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BoardVO> selectBOardCriteria(Criteria cri) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int countBoard() throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public List<BoardVO> selectSearchBoardList(SearchCriteria cri) throws Exception {
@@ -152,6 +136,12 @@ public class MockBoardDAOImpl implements BoardDAO {
 	public void increaseViewcnt(int bno) throws Exception {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<BoardVO> selectBoardCriteria(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

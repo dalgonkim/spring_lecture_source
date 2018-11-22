@@ -5,13 +5,13 @@
 
 
 
-<%@include file="../include/header.jsp"%>
-
+<head>
+	<title>자유게시판</title>
 <style>
 button#searchBtn{	
 	width:27px;
 	height:27px;
-	background-image:url('/board/resources/dist/img/search.png');	
+	background-image:url('<%=request.getContextPath()%>/resources/dist/img/search.png');	
 	background-position:center;
 	background-size:contain;	
 	background-color:white;	
@@ -38,7 +38,9 @@ button#searchBtn{
 }
 
 </style>
+</head>
 
+<body>
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -75,7 +77,7 @@ button#searchBtn{
 							</select>
 							<input id="keywordInput"
 								   name="keyword"
-								   type="text" />
+								   type="text"  value="${cri.keyword}"/>
 							<button id="searchBtn" ></button>
 						</li>
 					</ul>
@@ -94,7 +96,7 @@ button#searchBtn{
 							<th>REGDATE</th>
 							<th style="width: 40px">VIEWCNT</th>
 						</tr>
-
+						<c:if test="${!empty list }">
 						<c:forEach items="${list}" var="boardVO">
 
 							<tr>
@@ -109,6 +111,12 @@ button#searchBtn{
 							</tr>
 
 						</c:forEach>
+						</c:if>
+						<c:if test="${empty list }">
+							<tr>
+								<td style="text-align:center;" colspan="5">내용이 없습니다.</td>
+							</tr>
+						</c:if>
 
 					</table>
 				</div>
@@ -193,9 +201,9 @@ button#searchBtn{
 	});
 </script>
 
-<%@include file="../include/footer.jsp"%>
 
 
+</body>
 
 
 
