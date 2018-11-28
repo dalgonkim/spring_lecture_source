@@ -1,4 +1,4 @@
-package com.spring.controller;
+package com.rest.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.dto.SampleVO;
-import com.spring.dto.SampleVOList;
+import com.rest.dto.SampleVO;
+import com.rest.dto.SampleVOList;
 
 @RestController
 @RequestMapping("/rs")

@@ -1,10 +1,10 @@
-package com.spring.controller;
+package com.rest.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.dto.SampleVO;
+import com.rest.dto.SampleVO;
 
 @Controller
 @RequestMapping("/sample")

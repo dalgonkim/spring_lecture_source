@@ -7,12 +7,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name="",propOrder={"firstName","lastName"})
 public class SampleVO {
+	
 	private String firstName;
 	private String lastName;
 	
-	
 	public SampleVO(){}
-	
 	public SampleVO(String firstName, String lastName) {
 		super();
 		this.firstName = firstName;
@@ -35,6 +34,8 @@ public class SampleVO {
 	public String toString() {
 		return "SampleVO [firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
+	
+	
 	
 	
 }

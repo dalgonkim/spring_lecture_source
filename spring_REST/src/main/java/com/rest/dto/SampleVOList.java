@@ -8,34 +8,24 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name="sample-list")
+@XmlRootElement(name="samples")
 public class SampleVOList {
 	
 	@XmlElement(name="sample")
-	private List<SampleVO> sample;
+	private List<SampleVO> sampleList;
 
-	public SampleVOList(){}
-	public SampleVOList(List<SampleVO> sample) {
-		super();
-		this.sample = sample;
+	public List<SampleVO> getSampleList() {
+		return sampleList;
 	}
-	public List<SampleVO> getSample() {
-		return sample;
+
+	public void setSampleList(List<SampleVO> sampleList) {
+		this.sampleList = sampleList;
 	}
-	public void setSample(List<SampleVO> sample) {
-		this.sample = sample;
+
+	@Override
+	public String toString() {
+		return "SampleVOList [sampleList=" + sampleList + "]";
 	}
-	
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
