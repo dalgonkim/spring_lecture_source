@@ -2,15 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
 
-<%@include file="../include/header.jsp"%>
 
+
+<head>
+	<title>자유게시판</title>
 <style>
 button#searchBtn{	
 	width:27px;
 	height:27px;
-	background-image:url('/board/resources/dist/img/search.png');	
+	background-image:url('<%=request.getContextPath()%>/resources/dist/img/search.png');	
 	background-position:center;
 	background-size:contain;	
 	background-color:white;	
@@ -37,7 +38,9 @@ button#searchBtn{
 }
 
 </style>
+</head>
 
+<body>
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -51,6 +54,8 @@ button#searchBtn{
 				<div class='box-body'>
 					<ul>
 						<li>
+							<button type="button" id="pdfBtn" class="btn btn-warning" >PDF</button>
+							<button type="button" id="excelBtn" class="btn btn-warning" >Excel</button>
 							<button id='newBtn' class="btn btn-primary" onclick="javascript:location.href='register';">New Board</button>
 						</li>
 						<li>
@@ -72,7 +77,7 @@ button#searchBtn{
 							</select>
 							<input id="keywordInput"
 								   name="keyword"
-								   type="text" />
+								   type="text"  value="${cri.keyword}"/>
 							<button id="searchBtn" ></button>
 						</li>
 					</ul>
@@ -91,7 +96,7 @@ button#searchBtn{
 							<th>REGDATE</th>
 							<th style="width: 40px">VIEWCNT</th>
 						</tr>
-
+						<c:if test="${!empty list }">
 						<c:forEach items="${list}" var="boardVO">
 
 							<tr>
@@ -106,6 +111,12 @@ button#searchBtn{
 							</tr>
 
 						</c:forEach>
+						</c:if>
+						<c:if test="${empty list }">
+							<tr>
+								<td style="text-align:center;" colspan="5">내용이 없습니다.</td>
+							</tr>
+						</c:if>
 
 					</table>
 				</div>
@@ -151,20 +162,15 @@ button#searchBtn{
 <!-- /.content -->
 
 <form id="jobForm">
-  <input type='hidden' name="page" value="${pageMaker.cri.page}">
-  <input type='hidden' name="perPageNum" value="${pageMaker.cri.perPageNum}">
-   <input type='hidden' name="searchType" value="${cri.searchType}"/>
+  <input type='hidden' name="page" value="${pageMaker.cri.page}"/>
+  <input type='hidden' name="perPageNum" value="${pageMaker.cri.perPageNum}"/>
+  <input type='hidden' name="searchType" value="${cri.searchType}"/>
   <input type='hidden' name="keyword" value="${cri.keyword}"/>
 </form>
 
 
 <script>
-	var result = '${msg}';
-
-	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
-	}
-	
+		
 	$(".link li a").on("click", function(event){
 		
 		event.preventDefault(); 
@@ -173,7 +179,7 @@ button#searchBtn{
 		
 		var jobForm = $("#jobForm");
 		jobForm.find("[name='page']").val(targetPage);
-		jobForm.attr("action","listPage").attr("method", "get");
+		jobForm.attr("action","listPage").attr("method", "get");		
 		jobForm.submit();
 	});
 	
@@ -185,11 +191,19 @@ button#searchBtn{
 					   +"&keyword="
 					   +$('#keywordInput').val();
 	});
+	
+	
+	$('#pdfBtn').on('click',function(event){
+		location.href="listPage/pdf?page=${pageMaker.cri.page}&perPageNum=${pageMaker.cri.perPageNum}";
+	});
+	$('#excelBtn').on('click',function(event){
+		location.href="listPage/excel?page=${pageMaker.cri.page}&perPageNum=${pageMaker.cri.perPageNum}";		
+	});
 </script>
 
-<%@include file="../include/footer.jsp"%>
 
 
+</body>
 
 
 

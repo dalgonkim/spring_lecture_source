@@ -4,9 +4,25 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 
-<%@include file="../include/header.jsp"%>
 
+<head>
+	<title>자유게시판</title>
+</head>
+
+<body>
 <!-- Main content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+   자유게시판
+    <small>(우리의 이야기)</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
+
 <section class="content">
 	<div class="row">
 		<!-- left column -->
@@ -56,8 +72,7 @@
 	<!-- /.row -->
 </section>
 <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+
 
 <script>
     
@@ -68,5 +83,5 @@
     }
     
     </script>
+</body>
 
-<%@include file="../include/footer.jsp"%>

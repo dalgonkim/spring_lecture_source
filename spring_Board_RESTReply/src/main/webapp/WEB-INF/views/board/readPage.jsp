@@ -1,7 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 
-<%@include file="../include/header.jsp" %>
+
+<head>
+	<title>자유게시판</title>
+</head>
+
+<body>
+<!-- Main content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+   상세페이지
+    <small>(너의 이야기)</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
 
     <!-- Main content -->
     <section class="content">
@@ -48,30 +65,30 @@
 
 
 <script>
-$(document).ready(function(){
-	
-	var formObj = $("form[role='form']");
-	
-	console.log(formObj);
-	
-	$("#modifyBtn").on("click", function(){
-		formObj.attr("action", "modifyPage");
-		formObj.attr("method", "get");		
-		formObj.submit();
-	});
-	
-	$("#removeBtn").on("click", function(){
-		formObj.attr("action", "removePage");
-		formObj.submit();
-	});
-	
-	$("#listBtn").on("click", function(){
-		formObj.attr("method", "get");
-		formObj.attr("action", "listPage");
-		formObj.submit();
-	});
-	
+
+
+var formObj = $("form[role='form']");
+
+console.log(formObj);
+
+$("#modifyBtn").on("click", function(){
+	formObj.attr("action", "modifyPage");
+	formObj.attr("method", "get");		
+	formObj.submit();
 });
+
+$("#removeBtn").on("click", function(){
+	formObj.attr("action", "removePage");
+	formObj.submit();
+});
+
+$("#listBtn").on("click", function(){
+	formObj.attr("method", "get");
+	formObj.attr("action", "listPage");
+	formObj.submit();
+});
+
+
 </script>
 
 
@@ -84,5 +101,5 @@ $(document).ready(function(){
     </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
     
-<%@include file="../include/footer.jsp" %>
+</body>
   
