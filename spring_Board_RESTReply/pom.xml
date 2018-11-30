@@ -114,7 +114,12 @@
 			<artifactId>json-path</artifactId>
 			<version>0.8.1</version>
 		</dependency>
-
+		<!-- aspectjweaver -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.13</version>
+		</dependency>
 
 		<!-- AspectJ -->
 		<dependency>
