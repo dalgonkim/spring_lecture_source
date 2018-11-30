@@ -7,9 +7,11 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
-		<config>src/main/resources/context/servlet-context.xml</config>
+		<config>src/main/resources/com/spring/context/aop-context.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/com/spring/context/servlet-context.xml</config>
+		<config>src/main/resources/com/spring/context/root-context.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
