@@ -3,8 +3,10 @@ package com.spring.controller;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileCommand {
+	
 	private String title;
 	private MultipartFile file;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -22,17 +24,4 @@ public class FileCommand {
 		return "FileCommand [title=" + title + ", file=" + file + "]";
 	}
 	
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
