@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans	xmlns="http://www.springframework.org/schema/tx" 
+	xmlns:beans="http://www.springframework.org/schema/beans"	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<beans:import resource="classpath:com/spring/context/dataSource-context.xml"/>
+	
+	<advice id="txAdvice" transaction-manager="transactionManager">
+		<attributes>
+			<method name="*" propagation="REQUIRED"/>
+			<method name="create*" rollback-for="Exception"  />
+			<method name="modify*" rollback-for="Exception"  />
+			<method name="delete*" rollback-for="Exception"  />
+			<method name="remove*" rollback-for="Exception"  />
+			<method name="read*" read-only="true"  />
+			<method name="get*" read-only="true"  />
+			<method name="list*" read-only="true"  />
+			<method name="count*" read-only="true"  />
+		</attributes>
+	</advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(public * com.spring.service..*(..))"
+					  id="servicePublicMethod"/>
+		<aop:advisor advice-ref="txAdvice" 
+		             pointcut-ref="servicePublicMethod"/>	
+		
+	</aop:config>
+	
+</beans:beans>
+
+
+
+
+
