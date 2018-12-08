@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="boardDAO"
+		  class="com.spring.dao.BoardDAOImpl"
+		  p:session-ref="sqlSession"
+		  />
+	<bean id="boardService"
+	      class="com.spring.service.BoardServiceImpl"
+	      p:boardDAO-ref="boardDAO"
+	      p:attachDAO-ref="boardAttachDAO"
+	      /> 
+	      
+	<bean id="replyDAO"
+	      class="com.spring.dao.ReplyDAOImpl"
+	      p:session-ref="sqlSession"
+	      p:namespace="ReplyMapper" 
+	      />
+	<bean id="replyService"
+	      class="com.spring.service.ReplyServiceImpl"
+	      p:dao-ref="replyDAO"	      
+	     /> 
+	     
+	<bean id="boardAttachDAO"
+	      class="com.spring.dao.BoardAttachDAOImpl"
+	      p:session-ref="sqlSession"
+	      p:namespace="BoardAttachMapper"
+		  />
+</beans>
+
+
+
+
+
+
+
+
