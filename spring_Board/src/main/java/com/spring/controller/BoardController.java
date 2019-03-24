@@ -104,6 +104,7 @@ public class BoardController {
 		rttr.addFlashAttribute("msg","SUCCESS");
 		
 		// redirect page to listpage after remove page ... 
+		//dsfdsfdfds
 		return "redirect:/board/listPage";		
 	}
 }
