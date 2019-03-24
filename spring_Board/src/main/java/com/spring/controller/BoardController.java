@@ -71,7 +71,7 @@ public class BoardController {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.write("<script>");
-			out.write("alert('게시물이 존재하지않습니다.');");
+			out.write("alert('寃뚯떆臾쇱씠 議댁옱�븯吏��븡�뒿�땲�떎.');");
 			out.println("history.go(-1);");
 			out.write("</script>");
 		}
@@ -103,6 +103,7 @@ public class BoardController {
 		rttr.addAttribute("perPageNum",cri.getPerPageNum());
 		rttr.addFlashAttribute("msg","SUCCESS");
 		
+		// redirect page to listpage after remove page ... 
 		return "redirect:/board/listPage";		
 	}
 }
